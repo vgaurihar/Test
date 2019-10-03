@@ -1,5 +1,15 @@
 pipeline {
     agent any
+
+    parameters{
+        string(name: 'tomcat-dev', defaultValue: '10.10.10.10', description: 'test parameter1')
+        string(name: 'tomcat-prod', defaultValue: '10.10.10.11', description: 'test parameter2')
+    }
+
+    triggers{
+        pollSCM('* * * * *')
+    }
+
     stages {
         stage('Build'){
             steps {
