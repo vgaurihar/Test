@@ -8,7 +8,6 @@ pipeline {
             post {
                 success {
                     echo "succesfully build package. See in target directory"
-                    echo "now archieving ..."
                 }
             }
         }
