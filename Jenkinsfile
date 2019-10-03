@@ -1,20 +1,19 @@
 pipeline {
     agent any
     stages {
-        stage ('Initialize') {
+        stage('Build'){
             steps {
-                sh '''
-                    echo "This is Initialize stage"
-                '''
+                sh 'mvn clean package'
+            }
+            post {
+                success {
+                    echo "succesfully build package. See in target directory"
+                    echo "now archieving ..."
+                }
             }
         }
-        stage ('Build') {
-            steps {
-                sh '''
-                    echo "This is Build stage"
-                    echo 'Hello Vaibhav!'
-                '''
             }
         }
+
     }
 }
